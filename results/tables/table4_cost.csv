@@ -1,0 +1,13 @@
+model,params,epochs_run,sec_per_epoch,peak_vram_gb,head_latency_ms,total_ms_per_query
+Question only,198657.0,10.667,0.2,0.033,0.242,37.5
+Image only,198657.0,6.667,0.3,0.033,0.319,37.6
+Late fusion,1.0,0.0,0.0,,,
+Early fusion,396801.0,10.667,0.207,0.047,0.237,37.5
+Gated fusion,853761.0,9.333,0.32,0.05,0.553,37.9
+Cross-attention,987905.0,7.667,3.583,0.778,1.497,38.8
+"Cross-attention, 2 layers",1515265.0,7.667,5.163,0.788,3.02,40.3
+"Gated, no modality dropout",853761.0,7.0,0.277,0.05,0.541,37.8
+"Question only, soft labels",198657.0,9.667,0.2,0.033,0.27,37.6
+"Image only, soft labels",198657.0,6.667,0.177,0.033,0.261,37.6
+CLIP early fusion,264705.0,11.0,0.21,0.037,0.313,37.6
+CLIP gated fusion,591617.0,9.333,0.28,0.039,0.541,37.8

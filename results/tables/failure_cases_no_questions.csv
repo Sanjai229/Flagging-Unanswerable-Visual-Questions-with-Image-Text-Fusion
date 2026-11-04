@@ -1,0 +1,17 @@
+error,p,sharp_bin,rare_question,answer_type,vote_share
+missed unanswerable,0.004,blurry,common,unanswerable,0.7
+missed unanswerable,0.005,blurry,rare (<= 1 in train),unanswerable,0.5
+missed unanswerable,0.005,medium,common,unanswerable,0.6
+missed unanswerable,0.013,sharp,rare (<= 1 in train),unanswerable,0.8
+missed unanswerable,0.013,medium,common,unanswerable,0.7
+missed unanswerable,0.016,blurry,common,unanswerable,0.6
+missed unanswerable,0.018,sharp,rare (<= 1 in train),unanswerable,0.5
+missed unanswerable,0.019,medium,rare (<= 1 in train),unanswerable,0.7
+false alarm,1.0,blurry,rare (<= 1 in train),other,0.5
+false alarm,0.995,blurry,common,other,0.4
+false alarm,0.994,medium,rare (<= 1 in train),other,0.2
+false alarm,0.993,blurry,common,other,0.4
+false alarm,0.992,medium,common,other,0.3
+false alarm,0.992,sharp,common,other,0.0
+false alarm,0.991,medium,rare (<= 1 in train),other,0.4
+false alarm,0.991,sharp,rare (<= 1 in train),other,0.5

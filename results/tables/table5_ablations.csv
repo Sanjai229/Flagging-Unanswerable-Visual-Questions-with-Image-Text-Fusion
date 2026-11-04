@@ -1,0 +1,7 @@
+variant,compared with,macro_f1,auprc,brier,ece,macro_f1 change,95% CI,ece change
+"Question only, soft labels",Question only,0.66,0.533,0.207,0.198,-0.003,"[-0.007, 0.001]",0.032
+"Image only, soft labels",Image only,0.696,0.605,0.191,0.186,0.002,"[-0.003, 0.007]",0.036
+"Gated, no modality dropout",Gated fusion,0.757,0.713,0.151,0.121,0.002,"[-0.003, 0.006]",0.016
+"Cross-attention, 2 layers",Cross-attention,0.765,0.72,0.143,0.108,-0.001,"[-0.005, 0.003]",-0.004
+CLIP early fusion,Early fusion,0.8,0.777,0.124,0.085,0.029,"[0.020, 0.037]",-0.041
+CLIP gated fusion,Gated fusion,0.798,0.774,0.125,0.085,0.043,"[0.034, 0.051]",-0.02

@@ -1,0 +1,12 @@
+model,best_epoch,epochs_run,train_loss,dev_loss,gap,final_gap
+Question only,6.667,10.667,0.544,0.598,0.055,0.086
+Image only,2.667,6.667,0.443,0.578,0.135,0.446
+Early fusion,6.667,10.667,0.284,0.509,0.225,0.391
+Gated fusion,5.333,9.333,0.283,0.507,0.223,0.434
+Cross-attention,3.667,7.667,0.371,0.478,0.107,0.231
+"Cross-attention, 2 layers",3.667,7.667,0.368,0.47,0.102,0.226
+"Gated, no modality dropout",3.0,7.0,0.361,0.493,0.133,0.373
+"Question only, soft labels",5.667,9.667,0.582,0.616,0.035,0.056
+"Image only, soft labels",2.667,6.667,0.497,0.588,0.091,0.24
+CLIP early fusion,7.0,11.0,0.245,0.426,0.182,0.334
+CLIP gated fusion,5.333,9.333,0.278,0.437,0.159,0.322

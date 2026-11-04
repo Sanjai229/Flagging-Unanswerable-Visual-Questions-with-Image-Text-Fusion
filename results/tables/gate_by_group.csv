@@ -1,0 +1,11 @@
+group,level,label,mean_gate_q,n
+sharp_bin,blurry,answerable,0.215,1585
+sharp_bin,blurry,unanswerable,0.219,1124
+sharp_bin,medium,answerable,0.212,2102
+sharp_bin,medium,unanswerable,0.232,584
+sharp_bin,sharp,answerable,0.213,2166
+sharp_bin,sharp,unanswerable,0.243,439
+rare_question,common,answerable,0.194,3448
+rare_question,common,unanswerable,0.2,858
+rare_question,rare (<= 1 in train),answerable,0.24,2405
+rare_question,rare (<= 1 in train),unanswerable,0.245,1289

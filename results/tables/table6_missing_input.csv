@@ -1,0 +1,8 @@
+,macro_f1,macro_f1,macro_f1,auprc,auprc,auprc
+input,both inputs,no photo,no question,both inputs,no photo,no question
+model,,,,,,
+CLIP gated fusion,0.798,0.622,0.703,0.774,0.5,0.637
+Cross-attention,0.766,0.643,0.559,0.719,0.494,0.45
+Early fusion,0.771,0.638,0.61,0.733,0.497,0.534
+Gated fusion,0.756,0.641,0.671,0.708,0.504,0.553
+"Gated, no modality dropout",0.757,0.637,0.616,0.713,0.491,0.509

@@ -1,0 +1,5 @@
+rule,threshold,precision_unanswerable,recall_unanswerable,share_flagged
+dev-tuned macro-F1 threshold,0.67,0.662,0.67,0.272
+precision >= 60% on dev,0.481,0.577,0.81,0.377
+precision >= 70% on dev,0.665,0.661,0.674,0.274
+precision >= 80% on dev,0.856,0.804,0.463,0.154
