@@ -1,0 +1,111 @@
+# All settings for training and evaluation. Every reported number comes from this file plus a seed.
+# Paths are for Google Colab with Google Drive mounted; the notebooks and the command line can override them.
+
+paths:
+  features_dir: /content/drive/MyDrive/vizwiz_fusion/features      # written by notebooks/01_data_and_features.ipynb
+  runs_dir: /content/drive/MyDrive/vizwiz_fusion/individual_runs    # one folder per model and seed
+  local_features_dir: /content/features_local                       # fast local copy used while training
+
+training:
+  seeds: [0, 1, 2]
+  epochs: 30
+  batch_size: 256
+  lr: 0.001
+  weight_decay: 0.01          # AdamW (Loshchilov & Hutter 2019)
+  patience: 4                 # early stopping on dev AUPRC
+  train_probe_size: 5000      # train pairs scored in eval mode each epoch, for train/dev loss curves
+  latency_runs: 50            # single-pair forward passes timed per model (fusion head only)
+
+# Every model: a type, its inputs (names from features/manifest.json) and hyperparameters.
+# group: main = compared in the report; ablation = one change to a main model; reference = CLIP encoders.
+models:
+  question_only:
+    group: main
+    type: mlp
+    inputs: [txt_mean]
+    hidden: 256
+    dropout: 0.3
+  image_only:
+    group: main
+    type: mlp
+    inputs: [img_cls]
+    hidden: 256
+    dropout: 0.3
+  early:
+    group: main
+    type: mlp
+    inputs: [txt_mean, img_cls]
+    hidden: 256
+    dropout: 0.3
+  late:
+    group: main
+    type: late                # weighted average of two trained models, weight chosen on dev AUPRC
+    members: [question_only, image_only]
+  cross_attention:
+    group: main
+    type: cross_attention
+    q_tokens: txt_tok
+    q_mask: txt_mask
+    v_tokens: img_tok
+    d_model: 256
+    heads: 4
+    layers: 1
+    dropout: 0.1
+  gated:
+    group: main
+    type: gated               # Gated Multimodal Unit (Arevalo et al. 2017)
+    q_input: txt_mean
+    v_input: img_cls
+    hidden: 256
+    dropout: 0.3
+    modality_dropout: 0.15    # share of training pairs with the question or the photo blanked
+
+  # Ablations: one change each
+  cross_attention_2layers:
+    group: ablation
+    type: cross_attention
+    q_tokens: txt_tok
+    q_mask: txt_mask
+    v_tokens: img_tok
+    d_model: 256
+    heads: 4
+    layers: 2
+    dropout: 0.1
+  gated_no_modality_dropout:
+    group: ablation
+    type: gated
+    q_input: txt_mean
+    v_input: img_cls
+    hidden: 256
+    dropout: 0.3
+    modality_dropout: 0.0
+  question_only_soft:
+    group: ablation
+    type: mlp
+    inputs: [txt_mean]
+    hidden: 256
+    dropout: 0.3
+    label: soft               # target = share of the 10 crowd answers saying "unanswerable"
+  image_only_soft:
+    group: ablation
+    type: mlp
+    inputs: [img_cls]
+    hidden: 256
+    dropout: 0.3
+    label: soft
+
+  # Reference: CLIP encoders (Radford et al. 2021), not part of the main analysis
+  clip_early:
+    group: reference
+    type: mlp
+    inputs: [clip_txt, clip_img]
+    hidden: 256
+    dropout: 0.3
+  clip_gated:
+    group: reference
+    type: gated
+    q_input: clip_txt
+    v_input: clip_img
+    hidden: 256
+    dropout: 0.3
+    modality_dropout: 0.15
